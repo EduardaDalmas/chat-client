@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import io from 'socket.io-client'
 
-export default function Join({setChatVisibility}) {
+export default function Join({setChatVisibility, setSocket}) {
 
     const usernameRef = useRef()
 
@@ -10,6 +10,7 @@ export default function Join({setChatVisibility}) {
         if (!username.trim()) return alert('Nome do usuário é obrigatório')
         const socket = await io.connect('http://localhost:3001')
         socket.emit('set_username', username)
+        setSocket(socket)
         setChatVisibility(true)
     }
 
@@ -17,7 +18,7 @@ export default function Join({setChatVisibility}) {
         <div>
             <h1>Join</h1>
             <input type="text" ref={usernameRef} placeholder="Nome do usuário" />
-            <button onClick={() => handleSubmit()}>Entrar</button>
+            <button onClick={()=>handleSubmit()}>Entrar</button>
         </div>
     )
 }

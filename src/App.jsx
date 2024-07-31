@@ -5,12 +5,13 @@ import Chat from './components/chat/chat'
 
 export default  function App() {
   const [chatVisibility, setChatVisibility] = useState(false)
+  const [socket, setSocket] = useState(null)
 
   return (
     <>
       {
         // usar redux e react router
-        chatVisibility ? <Chat /> : <Join setChatVisibility={setChatVisibility} />
+        chatVisibility ? <Chat socket={socket}  /> : <Join setSocket={setSocket} setChatVisibility={setChatVisibility} />
       }
     </>
   )
