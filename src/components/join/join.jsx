@@ -1,5 +1,7 @@
 import { useRef } from "react"
 import io from 'socket.io-client'
+import style from './join.module.css'
+import {Input, Button} from '@mui/material'
 
 export default function Join({setChatVisibility, setSocket}) {
 
@@ -15,10 +17,10 @@ export default function Join({setChatVisibility, setSocket}) {
     }
 
     return (
-        <div>
-            <h1>Join</h1>
+        <div className={style['join-container']}>
+            <h1>Hello</h1>
             <input type="text" ref={usernameRef} placeholder="Nome do usuário" />
-            <button onClick={()=>handleSubmit()}>Entrar</button>
+            <Button sx={{mt:2}} onClick={()=>handleSubmit()} variant="contained">Entrar</Button>
         </div>
     )
 }
