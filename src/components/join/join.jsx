@@ -9,6 +9,7 @@ export default function Join({setChatVisibility}) {
         const username = usernameRef.current.value
         if (!username.trim()) return alert('Nome do usuário é obrigatório')
         const socket = await io.connect('http://localhost:3001')
+        socket.emit('set_username', username)
         setChatVisibility(true)
     }
 
